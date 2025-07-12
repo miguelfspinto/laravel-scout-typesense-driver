@@ -370,6 +370,7 @@ class TypesenseEngine extends Engine
      */
     protected function performSearch(Builder $builder, array $options = []): mixed
     {
+        $options = array_merge($options, $builder->options); // newly added line
         $documents = $this->typesense->getCollectionIndex($builder->model)
             ->getDocuments();
         if ($builder->callback) {
